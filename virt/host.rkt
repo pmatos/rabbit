@@ -19,6 +19,7 @@
 
 ; virConnectBaselineCPU
 
+
 ; virConnectBaselineHypervisorCPU
 
 ; virConnectClose
@@ -41,10 +42,15 @@
 (define-virt virConnectGetHostname (_fun _virConnect-ptr -> _string))
 
 ; virConnectGetLibVersion
-
+(define-virt virConnectGetLibVersion (_fun _virConnect-ptr (ver : (_ptr o _ulon)) -> (res : _int)
+                                           -> (cond
+                                                [(= res -1) #false]
+                                                [else ver])))
 ; virConnectGetMaxVcpus
+(define-virt virConnectGetMaxVcpus (_fun _virConnect-ptr _string -> _int))
 
 ; virConnectGetSysinfo
+(define-virt virConnectGetSysinfo (_fun _virConnect-ptr _uint -> _string))
 
 ; virConnectGetType
 
